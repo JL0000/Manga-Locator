@@ -2,6 +2,9 @@ from bs4 import BeautifulSoup
 import requests
 
 class Website():
+    def __init__(self):
+        self.base_html = "anysite.com"
+        
     def get_search(self, html, book_name):
         html += "/search?q="
         first_word = True
