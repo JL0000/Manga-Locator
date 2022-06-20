@@ -18,11 +18,10 @@ class Website():
         search = self.get_search(self.base_html, book_name)
         all_matches = []
         result = True
-        p = 1
+        page = 1
         while(result):  
             result = False
-            page = requests.get(search + str(p))
-            soup = BeautifulSoup(page.content, 'html.parser')
+            soup = self.get_soup(search, str(page))
             matches = self.search_matches(soup)
             for match in matches:
                 name = self.search_name(match)
@@ -35,8 +34,12 @@ class Website():
                     "price": price,
                     "link": link,
                 })
-            p += 1
+            page += 1
         return all_matches
+    
+    def get_soup(self, search, page):
+        page = requests.get(search + str(page))
+        return BeautifulSoup(page.content, 'html.parser')
 
     def search_matches(self, soup):
         pass
