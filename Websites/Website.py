@@ -25,6 +25,8 @@ class Website():
         while(result):  
             result = False
             soup = self.get_soup(search, str(page))
+            if self.one_match(soup):
+                return self.get_match(soup)
             matches = self.search_matches(soup)
             for match in matches:
                 name = self.search_name(match)
@@ -32,14 +34,16 @@ class Website():
                 link = self.search_link(match)
                 if name:
                     result = True
-                all_matches.append({
-                    "name": name,
-                    "price": price,
-                    "link": link,
-                })
+                all_matches.append(self.create_entry(name, price, link))
             page += 1
         return all_matches
     
+    def one_match(self, soup):
+        return False
+    
+    def get_match(self, soup):
+        pass
+
     def get_soup(self, search, page):
         page = requests.get(search + str(page))
         return BeautifulSoup(page.content, 'html.parser')
@@ -55,3 +59,6 @@ class Website():
 
     def search_link(self, match):
         pass
+
+    def create_entry(self, name, price, link):
+        return {"name": name, "price": price, "link": link,}
