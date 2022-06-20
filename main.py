@@ -1,7 +1,7 @@
 from util import *
-from TravellingMan import TravellingMan
-from Waterstones import Waterstones
-from BookDepository import BookDepository
+from Websites.TravellingMan import TravellingMan
+from Websites.Waterstones import Waterstones
+from Websites.BookDepository import BookDepository
 
 def main():
     book_name = get_book_name()

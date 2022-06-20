@@ -1,4 +1,4 @@
-from Website import Website
+from Websites.Website import Website
 
 class TravellingMan(Website):
     def __init__(self):

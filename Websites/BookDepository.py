@@ -1,4 +1,4 @@
-from Website import Website
+from Websites.Website import Website
 
 class BookDepository(Website):
     def __init__(self):

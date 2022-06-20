@@ -1,4 +1,4 @@
-from Website import Website
+from Websites.Website import Website
 import cloudscraper
 from bs4 import BeautifulSoup
 
