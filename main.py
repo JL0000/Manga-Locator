@@ -12,7 +12,7 @@ def main():
     matches.extend(tm.get_matches(book_name))
     matches.extend(ws.get_matches(book_name))
     matches.extend(bd.get_matches(book_name))
-    append_to_csv(matches)
+    append_to_csv(matches, book_name)
 
 if __name__ == "__main__":
     main()
