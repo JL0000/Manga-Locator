@@ -7,10 +7,10 @@ class Waterstones(Website):
         self.base_html = "https://www.waterstones.com"
         self.search_prefix = "/books/search/term/"
         self.search_suffix = "/category/394/facet/347/page/"
+        self.scraper = cloudscraper.create_scraper(delay=10,   browser={'custom': 'ScraperBot/1.0',})
 
     def get_soup(self, search, page):
-        scraper = cloudscraper.create_scraper(delay=10,   browser={'custom': 'ScraperBot/1.0',})
-        req = scraper.get(search + page)
+        req = self.scraper.get(search + str(page))
         return BeautifulSoup(req.content, 'html.parser')
 
     def one_match(self, soup):
