@@ -13,7 +13,7 @@ class Waterstones(Website):
         req = self.scraper.get(search + str(page))
         return BeautifulSoup(req.content, 'html.parser')
 
-    def one_match(self, soup):
+    def is_one_match(self, soup):
         return True if soup.select("section.book-detail") else False
     
     def get_one_match(self, soup):

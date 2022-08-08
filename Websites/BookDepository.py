@@ -9,7 +9,7 @@ class BookDepository(Website):
     def find_matches(self, soup):
         return soup.select("div.book-item")
     
-    def one_match(self, soup):
+    def is_one_match(self, soup):
         return True if soup.select("div.item-block") else False
     
     def get_one_match(self, soup):

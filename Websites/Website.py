@@ -16,7 +16,7 @@ class Website():
         while(result):  
             result = False
             soup = self.get_soup(search, page)
-            if self.one_match(soup):
+            if self.is_one_match(soup):
                 return self.get_one_match(soup)
             matches = self.find_matches(soup)
             if matches:
@@ -44,7 +44,7 @@ class Website():
         page = requests.get(search + str(page))
         return BeautifulSoup(page.content, 'html.parser')
     
-    def one_match(self, soup):
+    def is_one_match(self, soup):
         return False
     
     def get_one_match(self, soup):

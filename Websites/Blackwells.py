@@ -17,7 +17,7 @@ class Blackwells(Website):
         while(result):  
             result = False
             soup = self.get_soup(search, page)
-            if self.one_match(soup):
+            if self.is_one_match(soup):
                 return self.get_one_match(soup)
             matches = self.find_matches(soup)
             if matches:
